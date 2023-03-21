@@ -7,14 +7,10 @@
 class ConfigClass
 {
     private:
-       GUIMyFrame1 *MainWindow;   // wskaznik do glownego okna aplikacji
-       double x0, y0, z0, x1, y1,z1;     // wspolrzedne definiujace prostopadloscian swiata
-        //double alpha;           // kat obrotu wykresu
-        //bool ScreenRotate;      // jesli true obracamy wokol srodka ekranu
-                                // jesli false obracamy punktu przeciecia osi
-        //double dX,dY;           // przesuniecie wykresu wzgledem srodka ekranu
+        GUIMyFrame1 *MainWindow;   // wskaznik do glownego okna aplikacji
         double x_start, x_stop; // zakres zmiennosci argumentu funkcji x
         double y_start, y_stop; // zakres zmiennosci argumentu funkcji y
+        double z_start, z_stop; // zakres zmiennosci argumentu funkcji z
         int F_type;             // rodzaj obliczanej funkcji
 
     public:
@@ -29,32 +25,14 @@ class ConfigClass
         double Get_y_stop() { return y_stop; };
         void   Set_y_stop(double v) { y_stop = v; };
 
-        //bool RotateScreenCenter(){return ScreenRotate;};
-        //void SetRotateScreen(bool b){ScreenRotate=b;};
-        //double Get_Alpha(){return alpha;};
-        //void Set_Alpha(int a){alpha=a;};
-        //double Get_dX(){return dX;};
-        //void   Set_dX(float v){dX=v;};
-        //double Get_dY(){return dY;};
-        //void   Set_dY(float v){dY=v;};
-        double Get_x0(){return x0;};
-        void   Set_x0(float v){x0=v;};
-        double Get_y0(){return y0;};
-        void   Set_y0(float v){y0=v;};
-        double Get_z0(){return z0;};
-        void   Set_z0(float v){z0=v;};
-
-        double Get_x1(){return x1;};
-        void   Set_x1(float v){x1=v;};
-        double Get_y1(){return y1;};
-        void   Set_y1(float v){y1=v;};
-        double Get_z1(){return z1;};
-        void   Set_z1(float v){z1=v;};
+        double Get_z_start() { return z_start; };
+        void   Set_z_start(double v) {z_start = v;};
+        double Get_z_stop() { return z_stop; };
+        void   Set_z_stop(double v) { z_stop = v;};
 
         int  Get_F_type(){return F_type;};
         void Set_F_type(int i){F_type=i;};
-        void Save(char *filename);
-        void Load(char *filename);
+        
 };
 
 #endif

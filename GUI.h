@@ -27,6 +27,13 @@
 #include <wx/intl.h>
 #include <wx/valtext.h>
 #include <wx/choice.h>
+#include <wx/bitmap.h>
+#include <wx/dcbuffer.h>
+#include <wx/dcgraph.h>
+
+#include <wx/wxprec.h>
+#include <wx/print.h>
+#include <wx/printdlg.h>
 
 
 ///////////////////////////////////////////////////////////////////////////
@@ -50,16 +57,21 @@ class MyFrame1 : public wxFrame
 		wxTextCtrl* ustaw_x1;
 		wxStaticText* y1_text;
 		wxTextCtrl* ustaw_y1;
+		wxStaticText* z0_text;
+		wxTextCtrl* ustaw_z0;
+		wxStaticText* z1_text;
+		wxTextCtrl* ustaw_z1;
 		wxStaticText* kontur_text; // mapa kont. tekst
 		wxRadioButton* kontur_choice; // mapa konturowa
 		wxStaticText* rzut_text; // rzut persp. tekst
 		wxRadioButton* rzut_choice; // rzut perspektywistyczny
 		wxButton* wczyt_button; // wczytanie danych
-		wxComboBox* wybor_funkcji; // wybor funkcji
-		wxStaticText* maximum_text;  // maksimum 
-		wxStaticText* minimum_text; // minimum
+		wxChoice* WxChoice; // wybor funkcji
 		wxButton* zapis_button; // zapis
 		wxButton* druk_button; // druk
+
+		wxImage myImage;
+		wxBitmap myBitmap;
 	
 		virtual void mainFormClose(wxCloseEvent& event) { event.Skip(); }
 		virtual void WxPanel_Repaint(wxUpdateUIEvent& event) { event.Skip(); }
@@ -70,10 +82,17 @@ class MyFrame1 : public wxFrame
 		virtual void drukuj_click(wxCommandEvent& event) { event.Skip(); }
 		virtual void funkcja_pick(wxCommandEvent& event) { event.Skip(); }
 
+		virtual void WxEdit_x0_Update(wxCommandEvent& event) { event.Skip(); }
+		virtual void WxEdit_x1_Update(wxCommandEvent& event) { event.Skip(); }
+		virtual void WxEdit_y0_Update(wxCommandEvent& event) { event.Skip(); }
+		virtual void WxEdit_y1_Update(wxCommandEvent& event) { event.Skip(); }
+		virtual void WxEdit_z0_Update(wxCommandEvent& event) { event.Skip(); }
+		virtual void WxEdit_z1_Update(wxCommandEvent& event) { event.Skip(); }
+
 
 	public:
 		wxPanel* m_panel1;
-		MyFrame1( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = "Wykresy 3D", const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 689,427 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
+		MyFrame1( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = "Projekt 7: Wykresy 3D - Kowalczyk, Sulima, Wronka", const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 689,427 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
 		~MyFrame1();
 	
 };

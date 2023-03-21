@@ -3,6 +3,7 @@
 
 
 #include "GUI.h"
+#include "vecmat.h"
 #include <wx/filedlg.h>
 #include <wx/dcmemory.h>
 #include <wx/dcclient.h>
@@ -11,6 +12,7 @@
 #include <wx/colordlg.h>
 #include <wx/msgdlg.h>
 #include <wx/rawbmp.h>
+#include <wx/choice.h>
 #include <memory>
 
 class ConfigClass;
@@ -28,20 +30,22 @@ class GUIMyFrame1 : public MyFrame1
 		void zapisz_click(wxCommandEvent& event);
 		void drukuj_click(wxCommandEvent& event);
 		void funkcja_pick(wxCommandEvent& event);
+
+		void WxEdit_x0_Update(wxCommandEvent& event);
+		void WxEdit_x1_Update(wxCommandEvent& event);
+		void WxEdit_y0_Update(wxCommandEvent& event);
+		void WxEdit_y1_Update(wxCommandEvent& event);
+		void WxEdit_z0_Update(wxCommandEvent& event);
+		void WxEdit_z1_Update(wxCommandEvent& event);
+
 	public:
 		/** Constructor */
 		GUIMyFrame1(wxWindow* parent);
 	
-		//wxBitmap MemoryBitmap;
-		//wxImage image;
-		//float   function_data[100][3];
 	
-		void draw_prostopadloscian(double x0, double y0, double x1, double y1);
-		void PrepareData(int fun);
-		void draw_wykres(int N, float d[100][3], bool Contour, int MappingType, int NoLevels, bool ShowPoints);
+		
 
 	void Repaint();
-	void UpdateControls();
 	~GUIMyFrame1();
 	std::shared_ptr<ConfigClass> cfg;
 };

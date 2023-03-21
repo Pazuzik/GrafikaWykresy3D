@@ -2,9 +2,10 @@
 #define __ChartClass__
 
 #include <memory>
+#include <vector>
 #include "ConfigClass.h"
 
-class Matrix;
+class Matrix4;
 
 class ChartClass
 {
@@ -18,24 +19,17 @@ private:
     double GetFunctionValue(double x, double y); // zwraca wartosci rysowanej funkcji
 
     void line2d(Matrix t, double x1, double y1, double x2, double y2, int w, int h, wxDC* dc);
-    // powyzej sugerowana funkcja transformujaca odcinki (jesli ktos ma
-    // inny pomysl mozna ja usunac)
+    void line3d(Matrix4 t, double x1, double y1, double z1, double x2, double y2, double z2, int w, int h, wxDC* dc);
+ 
 
 public:
     ChartClass(std::shared_ptr<ConfigClass> c);
 
-    void Set_Range();   // ustala wartosci zmiennych x_min,y_min,z_min,x_max,y_max,z_max
-    double Get_Z_min(); // zwraca z_min
-    double Get_Z_max(); // zwraca z_max
-    void Draw(wxDC* dc, int w, int h);  // rysuje wykres
-
-    //Matrix Rotate(int w, int h); // macierz przejscia obrotu
-    //Matrix Scaling(int x, int y); // macierz przejscia skalowania
-    //Matrix Move(); // macierz przejscia przesuniecia wzdluz osi
-
-    //void MoveText(wxDC* DC, Matrix transposedMatrix, wxString s, double x, double y, int w, int h); // rysowanie tekstu
-
-
+    double Get_x_step() { return x_step; }
+    double Get_y_step() { return y_step; }
+    void Draw(wxDC* dc, int w, int h, Matrix4 t, std::vector<Point>& punkty);  // rysuje wykres
+    void Contour(wxDC* dc, int w, int h, Matrix t, std::vector<Point>& punkty); // rysuje mape 
+    void DrawFromFile(wxDC* dc, int w, int h, Matrix4 t, std::vector<Point>& punkty); // rysuje z danych wczytanych z pliku
 };
 
 #endif
